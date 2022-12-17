@@ -114,47 +114,67 @@ class App extends StatelessWidget {
                 height: 25,
               ),
               Container(
+                clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
                   color: const Color(0xFF1F2123),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Euro',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            '6 428',
+                            'Euro',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           const SizedBox(
-                            width: 10,
+                            height: 10,
                           ),
-                          Text(
-                            'EUR',
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.5),
-                            ),
-                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              const Text(
+                                '6 428',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'EUR',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.5),
+                                ),
+                              ),
+                            ],
+                          )
                         ],
-                      )
+                      ),
+                      Transform.scale(
+                        scale: 2.2,
+                        child: Transform.translate(
+                          offset: const Offset(
+                            -8,
+                            14,
+                          ),
+                          child: const Icon(
+                            Icons.euro_outlined,
+                            color: Colors.white,
+                            size: 84,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
