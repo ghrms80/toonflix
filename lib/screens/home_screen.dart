@@ -50,6 +50,14 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onRestart() {
+    setState(() {
+      isRunning = false;
+      totalSeconds = twentyFiveMinutes;
+      timer.cancel();
+    });
+  }
+
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     // print(duration.toString().split(".").first.substring(2, 7));
@@ -81,15 +89,43 @@ class _HomeScreenState extends State<HomeScreen> {
           Flexible(
             flex: 3,
             child: Center(
-              child: IconButton(
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
-                onPressed: isRunning ? onPausePressed : onStartPressed,
-                icon: Icon(
-                  isRunning
-                      ? Icons.pause_circle_outline
-                      : Icons.play_circle_outline_rounded,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: isRunning
+                    ? [
+                        IconButton(
+                          iconSize: 120,
+                          color: Theme.of(context).cardColor,
+                          onPressed:
+                              isRunning ? onPausePressed : onStartPressed,
+                          icon: Icon(
+                            isRunning
+                                ? Icons.pause_circle_outline
+                                : Icons.play_circle_outline_rounded,
+                          ),
+                        ),
+                      ]
+                    : [
+                        IconButton(
+                          iconSize: 120,
+                          color: Theme.of(context).cardColor,
+                          onPressed:
+                              isRunning ? onPausePressed : onStartPressed,
+                          icon: Icon(
+                            isRunning
+                                ? Icons.pause_circle_outline
+                                : Icons.play_circle_outline_rounded,
+                          ),
+                        ),
+                        IconButton(
+                          iconSize: 120,
+                          color: Theme.of(context).cardColor,
+                          onPressed: onRestart,
+                          icon: const Icon(
+                            Icons.restart_alt_outlined,
+                          ),
+                        ),
+                      ],
               ),
             ),
           ),
